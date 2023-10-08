@@ -1,0 +1,21 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    border:1px solid black;
+    .card-img{
+        img{
+            width:100%;
+            height:auto;
+        }
+    }
+    .card-content{
+        font-size:19px;
+        font-family: 'Assistant', sans-serif;
+        .title{
+            color:black;
+        }
+        .price{
+            color:#00000060;
+        }
+    }
+}

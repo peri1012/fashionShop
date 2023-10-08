@@ -1,0 +1,64 @@
+header{
+   
+        .row{
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            .header-top h1{
+                padding:12px 0;
+                text-align: center;
+                font-family: "Libre Baskerville", serif;
+                font-size: 14.5px;
+                color:#121212;
+                letter-spacing: 0.1rem;
+            }
+            .header-middle{
+                border-top:1px solid #121212BF;
+                border-bottom:1px solid #121212BF;
+                justify-content: space-between;
+                display: flex;
+                align-items: center;
+                .container{
+                    .row{
+                        padding: 14px;
+                        justify-content: space-between;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                        .logo{
+                            max-width: 300px;
+                            img{
+                                width:100%;
+                            }
+                        }
+                        .navbar{
+                            .navList{
+                                display: flex;
+                                font-family: 'Assistant', sans-serif;
+                                .navItem{
+                                    font-size: 16px;
+                                    padding:14px;
+                                }
+                            }
+                        }
+                        .header-icon{
+                            width:60%;
+                            .icons{
+                                display: flex;
+                                justify-content: flex-end;
+                                gap:15px;
+                                .icon{
+                                    font-size:16px;
+                                    color:grey;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .header-bottom{
+                justify-content: center;
+
+            }
+        }
+}
