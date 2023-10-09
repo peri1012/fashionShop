@@ -28,7 +28,7 @@ function ShopHome() {
                         <Card/>
                     </div>
                     <div className="btn">
-                        <Link to="/" className="button">View all</Link>
+                        <Link to="/catalogue" className="button">View all</Link>
                     </div>
                 </div>
             </div>
@@ -37,4 +37,5 @@ function ShopHome() {
   )
 }
 
-export default ShopHome
+export default ShopHome;
+

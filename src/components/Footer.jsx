@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import {FaArrowRight,  FaFacebookSquare, FaInstagram} from 'react-icons/fa';
-
+import foot1 from '../assets/images/foot1.png';
+import foot2 from '../assets/images/foot2.png';
+import foot3 from '../assets/images/foot3.png';
+import foot4 from '../assets/images/foot4.png';
+import foot5 from '../assets/images/foot5.png';
+import foot6 from '../assets/images/foot6.png';
+import foot7 from '../assets/images/foot7.png';
+import foot8 from '../assets/images/foot8.png';
+import foot9 from '../assets/images/foot9.png';
+import foot10 from '../assets/images/foot10.png';
+import foot11 from '../assets/images/foot11.png';
 const Footer = () => {
   return (
     <footer>
@@ -48,18 +58,51 @@ const Footer = () => {
                 <div className="media">
                     <form>
                         <input type="email" name="email" placeholder="Email"/>
-                        <button>
+                        <button className="btn">
                             <i className="icon"><FaArrowRight/></i>
                         </button>
                     </form>
                     <div className="social-medias">
-                        <FaFacebookSquare /> 
-                        <FaInstagram /> 
+                        <FaFacebookSquare /> <FaInstagram /> 
                     </div>
                 </div>
             </div>
             <div className="footer-bottom">
-                <div className="payment-cards"></div>
+                <div className="payment-cards">
+                    <div className="pay-item">
+                        <img src={foot1} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot2} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot3} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot4} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot5} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot6} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot7} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot8} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot9} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot10} alt="foot1" />
+                    </div>
+                    <div className="pay-item">
+                        <img src={foot11} alt="foot1" />
+                    </div>
+                </div>
                 <p>
                     ©2023, 
                     <Link to="/">The Fashion Shop</Link> 

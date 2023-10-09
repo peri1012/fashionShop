@@ -7,7 +7,7 @@ function Hero() {
                 <div className="hero-box">
                   <h1>Shop our collection</h1>
                   <p>Our collection is vast with clothes and accessories. Browse our website and you'll be impressed by the selection and prices we offer.</p>
-                  <Link to="/" className="button">Shop all</Link>
+                  <Link to="/catalogue" className="button">Shop all</Link>
               </div>
             </div>
         </div>
@@ -15,4 +15,4 @@ function Hero() {
   )
 }
 
-export default Hero
+export default Hero;

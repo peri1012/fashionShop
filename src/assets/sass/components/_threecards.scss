@@ -3,9 +3,14 @@
         .row{
             width:100%;
             display: grid;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: auto auto auto;
             gap: 10px;
             padding: 30px 0;
         }
+    }
+}
+@media (max-width:960px){
+    .three-cards .container .row {
+        grid-template-columns: auto;
     }
 }

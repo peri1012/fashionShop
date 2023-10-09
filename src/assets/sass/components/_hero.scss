@@ -5,8 +5,7 @@
     background-image: url('/assets/images/hero.webp');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: -350px;
-    opacity: 0.8;
+    background-position: center;
     .container{
         .row{
             display: flex;
@@ -15,22 +14,23 @@
             height:670px;
             padding: 100px 0;
             .hero-box{
-                max-width:45rem;
+                border: 1px solid red;
+                max-width:50%;
                 display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap:12px;
-            border:1px solid red;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap:12px;
                 h1{
                     font-size: 60px;
                     font-family: "Libre BasketVille" ,serif;
                     color:#fff;
+                    text-align: center;
                 }
                 p{
                     font-size: 20px;
                     font-family: "Assistant", sans-serif;
-                    color:#ffffff60;
+                    color:white;
                     text-align: center;
 
                 }
@@ -40,5 +40,10 @@
             }
             
         }
+    }
+}
+@media (max-width: 960px) {
+    .hero .container .row .hero-box{
+        max-width: 100%;
     }
 }
