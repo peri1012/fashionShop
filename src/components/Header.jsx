@@ -4,7 +4,6 @@ import Logo from "../assets/images/logo.avif";
 const Header = () => {
   return (
     <header className="header">
-      {/* <div className="container"> */}
         <div className="row">
           <div className="header-top">
             <h1>Welcome to our store</h1>
@@ -36,11 +35,12 @@ const Header = () => {
             </div>
           </div>
           <div className="header-bottom">
-            <span>Tel</span>
-            <Link to="tel:01623 842838">01623 842838</Link>
+            <div className="mobile">
+              <span>Tel</span>
+              <Link to="tel:01623 842838" className='number'>01623 842838</Link>
+            </div>
           </div>
         </div>
-      {/* </div> */}
     </header>
   )
 }
