@@ -14,9 +14,10 @@ import foot11 from '../assets/images/foot11.png';
 const Footer = () => {
   return (
     <footer>
-        < div className="container">
         <div className="row">
-            <div className="footer-top">
+            <div className="border">
+                <div className="container">
+                <div className="footer-top">
                 <div className="footer-part">
                     <h4>Quick links</h4>
                     <ul>
@@ -63,8 +64,12 @@ const Footer = () => {
                         </button>
                     </form>
                     <div className="social-medias">
-                        <FaFacebookSquare /> <FaInstagram /> 
+                        <Link to="https://en-gb.facebook.com/thefashionshopwarsop/"><FaFacebookSquare /></Link>
+                        <Link to="https://www.instagram.com/thefashionshopwarsop/?hl=en"><FaInstagram /> </Link>
+                         
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
             <div className="footer-bottom">
@@ -106,11 +111,10 @@ const Footer = () => {
                 <p>
                     ©2023, 
                     <Link to="/">The Fashion Shop</Link> 
-                    <Link to="/">Powered by Shopify </Link>
+                    <Link to="https://www.shopify.com/?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore">Powered by Shopify </Link>
                 </p>
             </div>
         </div>
-    </div>
 
     </footer>
   )

@@ -55,25 +55,5 @@ header{
                     }
                 }
             }
-            .header-bottom{
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 5px 0;
-                .mobile{
-                    width:40%;
-                    font-family: 'Assistant', sans-serif;
-                    font-size: 19px;
-                    span{
-                        color: #7e7e7e;
-                        margin-right: 10px;
-                        text-align: center;
-                    }
-                    .number{
-                        color: #7e7e7e;
-                    }
-                }
-            }
         }
 }

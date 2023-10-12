@@ -1,47 +1,71 @@
 @import '../mixins';
 
-.hero{
-    width:100%;
-    background-image: url('/assets/images/hero.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    .container{
-        .row{
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            height:670px;
-            padding: 100px 0;
-            .hero-box{
-                border: 1px solid red;
-                max-width:50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                gap:12px;
-                h1{
-                    font-size: 60px;
-                    font-family: "Libre BasketVille" ,serif;
-                    color:#fff;
-                    text-align: center;
-                }
-                p{
-                    font-size: 20px;
-                    font-family: "Assistant", sans-serif;
-                    color:white;
-                    text-align: center;
-
-                }
+.hero-section{
+    .header-bottom{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 0;
+        .mobile{
+            width:40%;
+            font-family: 'Assistant', sans-serif;
+            font-size: 19px;
+            span{
+                color: #7e7e7e;
+                margin-right: 10px;
+                text-align: center;
             }
-            .button{
-                @include button(transparent, 20px 35px, transparent);
+            .number{
+                color: #7e7e7e;
             }
-            
         }
     }
+    .hero{
+        width:100%;
+        background-image: url('/assets/images/hero.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        .container{
+            .row{
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                height:670px;
+                padding: 100px 0;
+                .hero-box{
+                    border: 1px solid red;
+                    max-width:50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    gap:12px;
+                    h1{
+                        font-size: 60px;
+                        font-family: "Libre BasketVille" ,serif;
+                        color:#fff;
+                        text-align: center;
+                    }
+                    p{
+                        font-size: 20px;
+                        font-family: "Assistant", sans-serif;
+                        color:white;
+                        text-align: center;
+    
+                    }
+                }
+                .button{
+                    @include button(transparent, 20px 35px, transparent);
+                }
+                
+            }
+        }
+    }
+
 }
+
 @media (max-width: 960px) {
     .hero .container .row .hero-box{
         max-width: 100%;

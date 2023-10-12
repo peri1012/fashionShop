@@ -1,0 +1,67 @@
+@import '../mixins';
+.login-content{
+    .container{
+        .row{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px;
+            .form{
+                width:100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:20px;
+                .title{
+                    text-align: center;
+                    font-size: 48px;
+                    font-weight: 700;
+                    font-family: 'Libre Baskerville', serif;
+                    padding: 20px 0;
+                }
+                .detail{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap:20px;
+                    input[type="email"],[type="password"]{
+                        width: 50%;
+                        padding:20px;
+                    }   
+                    .forget{
+                        width: 50%;
+                        .link{
+                            font-family: 'Assistant', sans-serif;
+                            font-size: 16px;
+                            color:#000;
+                            text-decoration: underline;
+                            text-align: left;
+                        }
+                    }
+                }
+                .actions{
+                    width:50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    .button{
+                        @include button(black, 20px 40px, transparent);
+                    }
+                    .link{
+                        font-family: 'Assistant', sans-serif;
+                        font-size: 16px;
+                        color:#000;
+                        text-decoration: underline;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}

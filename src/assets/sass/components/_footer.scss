@@ -1,101 +1,101 @@
 footer{
-    .container{
-        .row{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
+    .row{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .border{
+            border-top:1px solid #121212BF;
+            border-bottom:1px solid #121212BF;
             padding-top:20px;
-            .footer-top{
-                display: flex;
-                flex-direction: row;
-                .footer-part{
-                    width:33.3%;
+            .container{
+                .footer-top{
                     display: flex;
-                    flex-direction: column;
-                    p{  
-                        font-family: 'Assistant', sans-serif;
-                        font-size: 19px;
-                        color: #7e7e7e;
-                    }
-                    h4{
-                        font-family: 'Libre Baskerville', serif;
-                        font-size: 20px;
-                        margin-bottom: 28px;
-                        font-weight: 700;
-                    }
-                    ul{
-                        padding-bottom: 15px;
-                        li{
-                            margin-bottom: 15px;
-                            a{
-                                font-family: 'Assistant', sans-serif;
-                                font-size: 19px;
-                                text-align: center;
-                                color: #7e7e7e;
-                                &:hover{
-                                    color:#fff;
-                                    text-decoration: underline;
+                    flex-direction: row;
+                    .footer-part{
+                        width:33.3%;
+                        display: flex;
+                        flex-direction: column;
+                        p{  
+                            font-family: 'Assistant', sans-serif;
+                            font-size: 19px;
+                            color: #7e7e7e;
+                        }
+                        h4{
+                            font-family: 'Libre Baskerville', serif;
+                            font-size: 20px;
+                            margin-bottom: 28px;
+                            font-weight: 700;
+                        }
+                        ul{
+                            padding-bottom: 15px;
+                            li{
+                                margin-bottom: 15px;
+                                a{
+                                    font-family: 'Assistant', sans-serif;
+                                    font-size: 19px;
+                                    text-align: center;
+                                    color: #7e7e7e;
                                 }
                             }
                         }
                     }
                 }
-            }
-            .footer-middle{
-                .heading{
-                    font-size: 28px;
-                    font-family: 'Libre Baskerville', serif;
-                    padding: 20px 0;
-                }
-                .media{
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    form{
-                        display: flex;
-                        width:100%;
-                        input[type="email"]{
-                            width: 25%;
-                            padding:20px;
-                        }
-                        .btn{
-                            padding: 20px;
-                            margin-left:0;
-                        }
+                .footer-middle{
+                    .heading{
+                        font-size: 28px;
+                        font-family: 'Libre Baskerville', serif;
+                        padding: 20px 0;
                     }
-                    .social-medias{
-                        font-size: 20px;
-                        margin:20px;
-                        gap:20px;
+                    .media{
                         display: flex;
                         flex-direction: row;
-                    }
-                }
-            }
-            .footer-bottom{
-                .payment-cards{
-                    display: flex;
-                    justify-content: center;
-                    flex-direction: row;
-                    gap:10px;
-                    .pay-item{
-                        max-width:30px;
-                        height: 20px;
-                        img{
-                            width: 100%;
-                            
+                        justify-content: space-between;
+                        form{
+                            display: flex;
+                            width:100%;
+                            input[type="email"]{
+                                width: 25%;
+                                padding:20px;
+                            }
+                            .btn{
+                                padding: 20px;
+                                margin-left:0;
+                            }
+                        }
+                        .social-medias{
+                            font-size: 20px;
+                            margin:20px;
+                            gap:20px;
+                            display: flex;
+                            flex-direction: row;
                         }
                     }
                 }
-                padding: 45px 0 20px 0;
-                p{
-                    margin-top: 20px;
-                    text-align: center;
-                    font-size: 14px;
-                    color:#8A8FBE;
-                    a{
-                        color:#8A8FBE;
+            }
+        }
+        .footer-bottom{
+            .payment-cards{
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+                gap:10px;
+                .pay-item{
+                    max-width:30px;
+                    height: 20px;
+                    img{
+                        width: 100%;
+                        
                     }
+                }
+            }
+            padding: 45px 0 20px 0;
+            p{
+                margin-top: 20px;
+                text-align: center;
+                font-size: 14px;
+                color:#8A8FBE;
+                a{
+                    color:#8A8FBE;
                 }
             }
         }

@@ -1,0 +1,61 @@
+@import '../mixins';
+.reset-content{
+    .container{
+        .row{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px;
+            .form{
+                width:100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:20px;
+                .title{
+                    text-align: center;
+                    font-size: 48px;
+                    font-weight: 700;
+                    font-family: 'Libre Baskerville', serif;
+                    padding: 20px 0;
+                }
+                .detail{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap:20px;
+                    .info{
+                        font-family: 'Assistant', sans-serif;
+                        font-size: 19px;
+                    }
+                    input[type="email"]{
+                        width: 40%;
+                        padding:20px;
+                    } 
+                }
+                .actions{
+                    width:50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+                    .button{
+                        @include button(black, 20px 40px, transparent);
+                    }
+                    .link{
+                        font-family: 'Assistant', sans-serif;
+                        font-size: 16px;
+                        color:#000;
+                        text-decoration: underline;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -19,7 +19,7 @@ function Find() {
                         <p>Our shop is open Monday to Saturday 9am to 5pm excluding Bank Holidays. You’re guaranteed a warm welcome by our team. Orders placed on our website are despatched Monday to Friday. If you have chosen to collect from our shop you can do so during the hours above once you have received notification that your order is ready to pick up.</p>
                     </div>
                     <div className="btn">
-                        <Link to="/" className="button">Directions</Link>
+                        <Link to="https://www.google.com/maps?daddr=34+High+Street,+Market+Warsop,+NG20+0AE" className="button">Directions</Link>
                     </div>
                 </div>    
             </div>

@@ -28,16 +28,10 @@ const Header = () => {
               <ul className="icons">
                 <li className="icon"><FaSearch/></li>
                 <li className="icon"><Link to="/login"><FaUser/></Link></li>
-                <li className="icon"><FaBox/></li>
+                <li className="icon"><Link to="/cart"><FaBox/></Link></li>
               </ul>
             </div>
               </div>
-            </div>
-          </div>
-          <div className="header-bottom">
-            <div className="mobile">
-              <span>Tel</span>
-              <Link to="tel:01623 842838" className='number'>01623 842838</Link>
             </div>
           </div>
         </div>

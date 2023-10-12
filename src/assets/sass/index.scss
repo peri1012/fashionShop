@@ -4,6 +4,10 @@
 //Pages
 @import './pages/home';
 @import './pages/about';
+@import './pages/cart';
+@import './pages/login';
+@import './pages/reset';
+@import './pages/create';
 
 //Components
 @import './components/header';
@@ -15,6 +19,7 @@
 @import './components/threecards';
 @import './components/infocard';
 @import './components/find';
+@import './components/slideContent';
 
 //mixins
 @import '../sass/mixins';

@@ -1,0 +1,22 @@
+.slide-second{
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    padding: 50px;
+    .heading{
+      font-size:48px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .info{
+      font-family: 'Assistant', sans-serif;
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+    .button{
+      color:black !important;
+      border: 1px solid black !important;
+      @include button(red, 20px 35px, transparent);
+    }
+  }
