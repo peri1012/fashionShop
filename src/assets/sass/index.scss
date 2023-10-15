@@ -3,11 +3,13 @@
 
 //Pages
 @import './pages/home';
-@import './pages/about';
+@import './pages/catalogue';
 @import './pages/cart';
 @import './pages/login';
 @import './pages/reset';
 @import './pages/create';
+@import './pages/product-page';
+@import './pages/notFound';
 
 //Components
 @import './components/header';

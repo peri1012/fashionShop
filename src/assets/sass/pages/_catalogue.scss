@@ -1,0 +1,55 @@
+@import '../mixins';
+.catalogue{
+    .container{
+        .row{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .content{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap:30px;
+                padding: 30px 0;
+                .heading{
+                    font-size:48px;
+                    font-family: 'Libre Baskerville', serif;
+                }
+                .catalogue-menu{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                .cards{
+                    width:100%;
+                    display: grid;
+                    grid-template-columns: auto auto auto auto auto;
+                    gap: 10px;
+                    .card-box{
+                        width: 100%;
+                        .button{
+                            width:100%;
+                            @include button(black, 20px 35px, transparent);
+                        }
+                    }
+                }
+                .navigation{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 20px 0;
+                    .box{
+                        font-family: 'Assistant', sans-serif;
+                        font-size: 30px;
+                        span{
+                            margin:20px 30px;
+                            .icon{
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

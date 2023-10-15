@@ -4,7 +4,7 @@ function Card() {
   return (
     <div className="card">
         <div className="card-img">
-            <img src={card1} alt="Card 1" />
+            <Link to="/product-page"><img src={card1} alt="Card 1" /></Link>
         </div>
         <div className="card-content">
             <Link to="/" className="title">Cream shaped hem with pockets jumper 12-18</Link>

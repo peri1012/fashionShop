@@ -8,6 +8,8 @@ import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Reset from './pages/Reset';
 import CreateAccount from './pages/CreateAccount';
+import ProductPage from './pages/ProductPage';
+import NotFound from './pages/NotFound';
 
 
 
@@ -22,6 +24,8 @@ const App = () => {
         <Route path="/reset" element={<Reset/>} />
         <Route path="/create" element={<CreateAccount/>} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product-page" element={<ProductPage/>} />
+        <Route path="*" element={<NotFound/>} />
         </Routes>
 
   </>
