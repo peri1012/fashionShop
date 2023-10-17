@@ -8,7 +8,23 @@ import shopPay from '../assets/images/shopPay.png';
 import {FaCheck} from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
+import axios from "axios";
+import { useEffect,useState } from "react";
 function ProductPage() {
+    const[data,setData]=useState([])
+  useEffect(()=>{
+    getData()
+  },[])
+  const getData=async()=>{
+    await axios.get('http://localhost:5000/thefashionshop/products/')
+    .then((res)=>{
+      setData(res.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+    
+  };
   return (
     <>
     <Header/>
@@ -18,18 +34,18 @@ function ProductPage() {
                 <div className="row">
                     <div className="pictures">
                         <div className="top">
-                        <img src={card1} alt="Card 1" />
+                        <img src={`${'http://localhost:5000'}/${data.productImage}`} alt={data.name} />
                         </div>
                         <div className="bottom">
-                        <img src={card1} alt="Card 1" />
+                        <img src={`${'http://localhost:5000'}/${data.productImage}`} alt={data.name} />
                         </div>
                     </div>
                     <div className="info-box">
                         <p>The Fashion Shop</p>
                         <div className="heading">
-                            <h2>Envy silver squares with grey stones necklace</h2>
+                            <h2>{data.name}</h2>
                         </div>
-                        <p className="price">£22.00 GBP</p>
+                        <p className="price">£{data.price} GBP</p>
                         <p className='link'>Tax included. <Link to="/" className='link' id="link">Shipping</Link> calculated at checkout.</p>
                         <div className="quantity">
                             <p>Quantity</p>
@@ -46,7 +62,7 @@ function ProductPage() {
                         <p className='delivery second'>Usually ready in 24 hours</p>
                         <Link to="/" className='view'>View store information</Link>
                         <div className="info">
-                            <p>On a stunning chain, this designer inspired necklace has a series of open style square pendants adorned with faceted grey stones for added sparkle. With it's versatile longline design, this necklace adds a touch of glamour to any outfit, making it perfect for both formal occasions and everyday wear. </p>
+                            <p>{data.details} </p>
                             <p>It measures approx 34" and has an extender. </p>
                         </div>
                         <Link className='share'><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></Link>
@@ -62,10 +78,11 @@ function ProductPage() {
                     <h2>You may also like</h2>
                 </div>
                 <div className="cards">
-                    <Card/> 
-                    <Card/> 
-                    <Card/> 
-                    <Card/>     
+                {
+                        data.map(item=>(
+                            <Card data={item}/>
+                        ))
+                    }    
                 </div>
                 </div>
             </div>

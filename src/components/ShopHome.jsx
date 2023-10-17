@@ -1,8 +1,24 @@
 import {Link} from 'react-router-dom';
 import Card from './Card';
+import axios from "axios";
+import { useEffect,useState } from "react";
 function ShopHome() {
+    const[data,setData]=useState([])
+    useEffect(()=>{
+      getData()
+    },[])
+    const getData=async()=>{
+      await axios.get('http://localhost:5000/thefashionshop/products')
+      .then((res)=>{
+        setData(res.data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+      
+    };
   return (
-    <section class="shop-home">
+    <section className="shop-home">
         <div className="container">
             <div className="row">
                 <div className="first-part">
@@ -18,14 +34,11 @@ function ShopHome() {
                         <p>Featured products</p>
                     </div>
                     <div className="cards">
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
-                        <Card/>
+                    {
+                        data.map(item=>(
+                            <Card data={item}/>
+                        ))
+                    }
                     </div>
                     <div className="btn">
                         <Link to="/catalogue" className="button">View all</Link>

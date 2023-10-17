@@ -3,8 +3,25 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
 import {FaChevronRight, FaChevronDown} from 'react-icons/fa';
+import axios from "axios";
+import { useEffect,useState } from "react";
 
 function Catalogue() {
+  const[data,setData]=useState([])
+  useEffect(()=>{
+    getData()
+  },[])
+  const getData=async()=>{
+    await axios.get('http://localhost:5000/thefashionshop/products')
+    .then((res)=>{
+      setData(res.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+    
+  };
+
   return (
     <>
     <Header/>
@@ -29,86 +46,16 @@ function Catalogue() {
                 </div>
               </div>
               <div className="cards">
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>
-                <div className="card-box">
-                <Card/>
-                <button className="button">Add to cart</button>
-                </div>          
+                {
+                  data.map(item=>(
+                    <div className="card-box" key={item.id}  style={{ border: '1px solid green' }}>
+                    <Card data={item}/>
+                    <button className="button">Add to cart</button>
+                    </div>
+
+                  ))
+                }
+                
               </div>
               <div className="navigation">
                 <div className="box">
@@ -130,4 +77,5 @@ function Catalogue() {
   )
 }
 
-export default Catalogue
+export default Catalogue;
+
