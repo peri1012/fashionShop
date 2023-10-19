@@ -8,7 +8,7 @@ function ShopHome() {
       getData()
     },[])
     const getData=async()=>{
-      await axios.get('http://localhost:5000/thefashionshop/products')
+      await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
       .then((res)=>{
         setData(res.data);
       })

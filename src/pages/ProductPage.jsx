@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
-import card1 from '../assets/images/card1.webp';
 import shopPay from '../assets/images/shopPay.png';
 import {FaCheck} from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,21 +10,37 @@ import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import { useEffect,useState } from "react";
 function ProductPage() {
-    const[data,setData]=useState([])
-  useEffect(()=>{
+    const[single,setSingle]=useState({});
+    useEffect(()=>{
+        getSingleData()
+    },[])
+    const {productID}=useParams();
+    const getSingleData=async()=>{
+        await axios
+        .get(`${process.env.REACT_APP_SINGLE_PRODUCT}/${productID}`)
+        .then((res)=>{
+            setSingle(res.data);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
+
+    const[data,setData]=useState([]);
+    useEffect(()=>{
     getData()
-  },[])
-  const getData=async()=>{
-    await axios.get('http://localhost:5000/thefashionshop/products/')
-    .then((res)=>{
-      setData(res.data);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
-    
-  };
-  return (
+    },[])
+    const getData=async()=>{
+        await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
+        .then((res)=>{
+        setData(res.data.slice(0,4));
+        })
+        .catch((err)=>{
+        console.log(err);
+        })
+        
+    };
+    return (
     <>
     <Header/>
     <main>
@@ -34,18 +49,18 @@ function ProductPage() {
                 <div className="row">
                     <div className="pictures">
                         <div className="top">
-                        <img src={`${'http://localhost:5000'}/${data.productImage}`} alt={data.name} />
+                        <img src={`${process.env.REACT_APP_PRODUCT_IMG}${single.productImage}`} alt={single.name} />
                         </div>
                         <div className="bottom">
-                        <img src={`${'http://localhost:5000'}/${data.productImage}`} alt={data.name} />
+                        <img src={`${process.env.REACT_APP_PRODUCT_IMG}${single.productImage}`} alt={single.name} />
                         </div>
                     </div>
                     <div className="info-box">
                         <p>The Fashion Shop</p>
                         <div className="heading">
-                            <h2>{data.name}</h2>
+                            <h2>{single.name}</h2>
                         </div>
-                        <p className="price">£{data.price} GBP</p>
+                        <p className="price">£{single.price} GBP</p>
                         <p className='link'>Tax included. <Link to="/" className='link' id="link">Shipping</Link> calculated at checkout.</p>
                         <div className="quantity">
                             <p>Quantity</p>
@@ -62,7 +77,7 @@ function ProductPage() {
                         <p className='delivery second'>Usually ready in 24 hours</p>
                         <Link to="/" className='view'>View store information</Link>
                         <div className="info">
-                            <p>{data.details} </p>
+                            <p>{single.details} </p>
                             <p>It measures approx 34" and has an extender. </p>
                         </div>
                         <Link className='share'><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></Link>
@@ -80,7 +95,7 @@ function ProductPage() {
                 <div className="cards">
                 {
                         data.map(item=>(
-                            <Card data={item}/>
+                            <Card data={item} key={item.id}/>
                         ))
                     }    
                 </div>

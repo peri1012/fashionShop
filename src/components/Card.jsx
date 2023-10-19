@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 function Card({data}) {
- console.log(data)
   return (
     <div className="card">
         <div className="card-img">
-            <Link to="/product-page"><img src={`${'http://localhost:5000'}/${data.productImage}`} alt={data.name}/></Link>
+            <Link to={`/product-page/${data.id}`}><img src={`${'http://localhost:5000'}/${data.productImage}`} alt={data.name}/></Link>
         </div>
         <div className="card-content">
             <Link to="/" className="title">{data.name}</Link>

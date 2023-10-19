@@ -2,8 +2,26 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Card from '../components/Card';
 import {Link} from 'react-router-dom';
+import axios from "axios";
+import { useEffect,useState } from "react";
 
 function Cart() {
+    const[data,setData]=useState([])
+    useEffect(()=>{
+      getData()
+    },[])
+    const getData=async()=>{
+      await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
+      .then((res)=>{
+        setData(res.data.slice(0,4));
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+      
+    };
+ 
+
   return (
     <>
         <Header/>
@@ -36,10 +54,11 @@ function Cart() {
                             <p>Featured collection</p>
                         </div>
                         <div className="cards">
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
+                        {
+                            data.map(item=>(
+                                <Card data={item}/>
+                            ))
+                        }
                         </div>
                         <div className="btn">
                             <Link to="/catalogue" className="button">View all</Link>

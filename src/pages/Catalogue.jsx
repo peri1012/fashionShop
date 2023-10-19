@@ -5,19 +5,27 @@ import Card from '../components/Card';
 import {FaChevronRight, FaChevronDown} from 'react-icons/fa';
 import axios from "axios";
 import { useEffect,useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Catalogue() {
-  const[data,setData]=useState([])
+  const navigate=useNavigate();
+  const[data,setData]=useState([]);
+  const [loading,setLoading]=useState(false);
+  
   useEffect(()=>{
     getData()
   },[])
   const getData=async()=>{
-    await axios.get('http://localhost:5000/thefashionshop/products')
+    setLoading(true)
+    await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
     .then((res)=>{
       setData(res.data);
+      setLoading(false)
     })
     .catch((err)=>{
       console.log(err);
+      setLoading(false);
+      navigate("/error");
     })
     
   };
