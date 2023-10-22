@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,7 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import { useEffect,useState } from "react";
+import { Context } from '../utils/MainContext';
 function ProductPage() {
+    //Global states
+    const {addToCart}=useContext(Context);
     const[single,setSingle]=useState({});
     useEffect(()=>{
         getSingleData()
@@ -70,7 +73,7 @@ function ProductPage() {
                                 <div className="up">+</div>
                             </div>
                         </div>
-                        <button className="button">Add to cart</button>
+                        <button className="button" onClick={()=>addToCart(single)}>Add to cart</button>
                         <button className="button shopPay"><span className="word">Buy with</span> <img src={shopPay} alt="shopPay" /></button>
                         <Link to="/" className='detail-payment'>More payment options</Link>
                         <p className='delivery'><FaCheck className='icon'/> Pickup available at 34 High Street</p>

@@ -3,9 +3,11 @@ import Header from "../components/Header";
 import Card from '../components/Card';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-import { useEffect,useState } from "react";
-
+import { useContext, useEffect,useState } from "react";
+import { Context } from "../utils/MainContext";
 function Cart() {
+    //Global states
+    const {cart}=useContext(Context);
     const[data,setData]=useState([])
     useEffect(()=>{
       getData()

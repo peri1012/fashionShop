@@ -109,7 +109,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <p>
-                    ©2023, 
+                    ©{new Date().getFullYear()}, 
                     <Link to="/">The Fashion Shop</Link> 
                     <Link to="https://www.shopify.com/?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore">Powered by Shopify </Link>
                 </p>

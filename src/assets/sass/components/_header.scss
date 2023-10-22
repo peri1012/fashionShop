@@ -1,3 +1,4 @@
+@import '../mixins';
 header{
         .row{
             justify-content: center;
@@ -52,8 +53,165 @@ header{
                                 }
                             }
                         }
+                        .userArea {
+                            display: flex;
+                            gap: 32px;
+                            .cart {
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              position: relative;
+                              font-size: 18px;
+                              cursor: pointer;
+                              .count {
+                                position: absolute;
+                                top:0;
+                                right: -10px;
+                                background-color:black;
+                                color: #fff;
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                font-size: 14px;
+                              }
+                            }
+                            
+                            
+                          }
+                        }
+                      }
+                      .cartBox {
+                        width: 400px;
+                        height: auto;
+                        position: fixed;
+                        top: 120px;
+                        border: 1px solid black;
+                        right: 50px;
+                        background-color: white;
+                        box-shadow: 1px 1px 10px 1px #ffffff50;
+                        padding: 16px;
+                        transform: translateX(100%);
+                        opacity: 0;
+                        visibility: hidden;
+                        z-index: 99;
+                        &.isOpen {
+                          transform: translateX(0%);
+                          opacity: 1;
+                          visibility: visible;
+                        }
+                        .cartHead {
+                          display: flex;
+                          justify-content: space-between;
+                          padding: 0 16px;
+                          margin-bottom: 50px;
+                          background-color: white;
+                          svg {
+                            path {
+                              cursor: pointer;
+                              &:hover {
+                                color: red;
+                              }
+                            }
+                          }
+                        }
+                        .cartList {
+                          width: 100%;
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                          gap: 16px;
+                          .empty {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 16px;
+                          }
+                          .cartItem {
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            gap: 16px;
+                            border-bottom: 1px solid #ce8339;
+                            position: relative;
+                            &:hover {
+                              .remove {
+                                opacity: 1;
+                                visibility: visible;
+                              }
+                            }
+                            .carImg {
+                              width: 100px;
+                              height: 50px;
+                              img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                              }
+                            }
+                            .carInfo {
+                              p {
+                                color: #ce8339;
+                                margin-bottom: 5px;
+                                font-weight: 700;
+                              }
+                            }
+                            .remove {
+                              position: absolute;
+                              top: 0;
+                              left: 0;
+                              width: 100%;
+                              height: 100%;
+                              background-color: #ff000080;
+                              backdrop-filter: blur(4px);
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              font-weight: 500;
+                              font-size: 18px;
+                              cursor: pointer;
+                              visibility: hidden;
+                              opacity: 0;
+                            }
+                          }
+                          gap: 8px;
+                        .button{
+                            text-align: center;
+                            width:100%;
+                            @include button(black, 20px 35px, transparent);
+                        }
+                        .detail-payment{
+                            font-family: 'Assistant', sans-serif;
+                            font-size: 16px;
+                            color:#000;
+                            text-decoration: underline;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 30px;
+                        }
+                        }
+                      }
+                      .overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        z-index: 1;
+                        background-color: transparent;
+                        visibility: hidden;
+                        opacity: 0;
+                        &.isOpen {
+                          visibility: visible;
+                          opacity: 1;
+                        }
                     }
-                }
+                
             }
         }
 }

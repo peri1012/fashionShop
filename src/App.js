@@ -10,13 +10,13 @@ import Reset from './pages/Reset';
 import CreateAccount from './pages/CreateAccount';
 import ProductPage from './pages/ProductPage';
 import NotFound from './pages/NotFound';
+import { MainContext } from './utils/MainContext';
 
 
 
 const App = () => {
   return (
-
-<>
+<MainContext>
     <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path="/catalogue" element={<Catalogue />} />
@@ -27,8 +27,7 @@ const App = () => {
         <Route path="/product-page/:productID" element={<ProductPage/>} />
         <Route path="*" element={<NotFound/>} />
         </Routes>
-
-  </>
+  </MainContext>
   )
 }
 

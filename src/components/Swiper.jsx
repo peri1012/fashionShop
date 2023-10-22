@@ -28,11 +28,11 @@ export default function App() {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
+        
+        // navigation={true}
+         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-      <SwiperSlide><img src={slide1} alt="slide1" className='swiper-slide'/></SwiperSlide>
       <SwiperSlide><img src={slide2} alt="slide2" className='swiper-slide'/>
         <SlideContent/>
       </SwiperSlide>
@@ -45,6 +45,7 @@ export default function App() {
       <SwiperSlide><img src={slide5} alt="slide5" className='swiper-slide'/>
       <SlideContent/>
       </SwiperSlide>
+
       </Swiper>
     </>
   );

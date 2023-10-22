@@ -1,4 +1,3 @@
-//Link
 import {Link} from 'react-router-dom';
 function SlideContent() {
   return (
