@@ -11,7 +11,6 @@ import 'swiper/scss/pagination';
 import { Pagination, Navigation } from 'swiper/modules';
 
 //import images
-import slide1 from '../assets/images/slide1.webp';
 import slide2 from '../assets/images/slide2.webp';
 import slide3 from '../assets/images/slide3.webp';
 import slide4 from '../assets/images/slide4.webp';

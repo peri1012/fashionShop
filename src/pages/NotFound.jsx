@@ -1,10 +1,8 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+
 import {Link} from 'react-router-dom';
 function NotFound() {
   return (
     <>
-    <Header/>
     <main>
       <section className="not-found">
           <div className="container">
@@ -23,7 +21,6 @@ function NotFound() {
       </section>
     </main>
     
-    <Footer/>
 
 </>
   )

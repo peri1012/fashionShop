@@ -43,6 +43,12 @@
                         @include button(black, 20px 40px, transparent);
                     }
                 }
+                .message{
+                    display: none;
+                }
+                .active{
+                    display: block;
+                }
             }
         }
     }

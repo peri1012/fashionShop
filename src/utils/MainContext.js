@@ -6,7 +6,7 @@ export const MainContext = ({children})=>{
     const [cart,setCart]=useState([]);
 
     const addToCart=(data)=>{
-        const existingProduct= cart.find(item=>item.id==data.id)
+        const existingProduct= cart.find(item=>item.id===data.id)
         if(existingProduct){
             const updatedCart= cart.filter(product=>{
                 if(product.id===existingProduct.id){
@@ -15,17 +15,26 @@ export const MainContext = ({children})=>{
                     return product
                 }
             })
-            setCart(updatedCart)
+            setCart(updatedCart);
         }else{
             setCart([...cart,{...data,quantity:1}]);
         }
         
     }
+    const removeCartFromCart=(id)=>{
+        const updatedCart=cart.filter((item)=>item.id !== id);
+    setCart(updatedCart);
+    };
+    const saveCart =() =>{
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
     const globalStates={
         cart,
         setCart,
         //functions
-        addToCart
+        addToCart,
+        removeCartFromCart,
+        saveCart
     }
     
 

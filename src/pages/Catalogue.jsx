@@ -1,6 +1,4 @@
-import React from 'react'
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
 import Card from '../components/Card';
 import {FaChevronRight, FaChevronDown} from 'react-icons/fa';
 import axios from "axios";
@@ -32,7 +30,6 @@ function Catalogue() {
 
   return (
     <>
-    <Header/>
     <main>
       <section className="catalogue">
         <div className="container">
@@ -80,7 +77,6 @@ function Catalogue() {
         </div>
       </section>
     </main>
-    <Footer/>
     </>
   )
 }

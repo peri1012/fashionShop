@@ -1,21 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-
+import {object, string} from 'yup';
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 function Login() {
+    const navigate=useNavigate()
+    const loginSchema=object({
+        email:string().required("Email can't be blank.").trim(),
+        password:string().required("Password can't be blank.").trim().matches(/[a-zA-Z0-9]{8,18}$/)
+    })
+    const {register, handleSubmit, formState:{errors}}=useForm({
+        resolver: yupResolver(loginSchema)
+    })
+    const submitForm =async (data)=>{
+        await axios
+        .post(process.env.REACT_APP_LOGIN,data)
+        .then(res=>{
+            localStorage.setItem("token", JSON.stringify(res.data.token));
+            navigate("/account")
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+
+    }
+    
   return (
     <>
-    <Header/>
     <main>
         <section className="login-content">
             <div className="container">
                 <div className="row">
-                    <form action="" className='form'>
-                        <label htmlFor="" className='title'>Login</label>
+                    <form className='form' onSubmit={handleSubmit(submitForm)}>
+                        <label className='title'>Login</label>
                         <div className="detail">
-                            <input type="email" name="email" id="" placeholder='Email'/>
-                            <input type="password" name="password" id="" placeholder='Password'/>
+                            <input type="email" name="email" placeholder='Email' {...register("email")}/>
+                            <input type="password" name="password"  placeholder='Password'{...register("password")} />
                             <div className="forget">
                             <Link to="/reset" className='link'>Forgot your password?</Link>
                             </div>
@@ -30,7 +52,6 @@ function Login() {
             </div>
         </section>
     </main>
-    <Footer/>
     </>
   )
 }

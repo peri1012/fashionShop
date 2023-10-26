@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import Card from '../components/Card';
 import shopPay from '../assets/images/shopPay.png';
 import {FaCheck} from 'react-icons/fa';
@@ -14,10 +12,10 @@ function ProductPage() {
     //Global states
     const {addToCart}=useContext(Context);
     const[single,setSingle]=useState({});
-    useEffect(()=>{
-        getSingleData()
-    },[])
     const {productID}=useParams();
+    useEffect(()=>{
+    getSingleData()
+    },[])
     const getSingleData=async()=>{
         await axios
         .get(`${process.env.REACT_APP_SINGLE_PRODUCT}/${productID}`)
@@ -45,7 +43,6 @@ function ProductPage() {
     };
     return (
     <>
-    <Header/>
     <main>
         <section className="product">
             <div className="container">
@@ -107,7 +104,6 @@ function ProductPage() {
             </div>
         </section>
     </main>
-    <Footer/>
     </>
   )
 }
