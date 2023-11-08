@@ -5,6 +5,7 @@ import shopPay from '../assets/images/shopPay.png';
 import {FaCheck} from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { FaWindowClose} from 'react-icons/fa';
 import axios from "axios";
 import { useEffect,useState } from "react";
 import { Context } from '../utils/MainContext';
@@ -15,18 +16,19 @@ function ProductPage() {
     const {productID}=useParams();
     useEffect(()=>{
     getSingleData()
-    },[])
+    },[productID])
     const getSingleData=async()=>{
         await axios
         .get(`${process.env.REACT_APP_SINGLE_PRODUCT}/${productID}`)
         .then((res)=>{
             setSingle(res.data);
+            
         })
         .catch((err)=>{
             console.log(err);
         })
     }
-
+    //Recommended cards
     const[data,setData]=useState([]);
     useEffect(()=>{
     getData()
@@ -41,6 +43,46 @@ function ProductPage() {
         })
         
     };
+    //Increase-decrease function
+    const [quantity, setQuantity] = useState(1);
+    const increaseQuantity = () => {
+        setQuantity(quantity + 1);
+    };
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        }
+    };
+
+    //Share Link Function
+    useEffect(()=>{
+        openShareDialog()
+        },[])
+    const openShareDialog = async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'Share this product',
+              text: `Check out ${single.name} on The Fashion Shop.`,
+              url: window.location.href,
+            });
+          } catch (error) {
+            console.error('Error sharing:', error);
+          }
+        }else {
+            alert('Sharing is not supported in this browser.');
+        }
+      };
+      
+      //Right-side 
+      const [isRightMenuOpen, setIsRightMenuOpen] = useState(false);
+      useEffect(()=>{
+        toggleRightMenu()
+        },[])
+      const toggleRightMenu = () => {
+        setIsRightMenuOpen(!isRightMenuOpen);
+      };
+
     return (
     <>
     <main>
@@ -65,9 +107,9 @@ function ProductPage() {
                         <div className="quantity">
                             <p>Quantity</p>
                             <div className="box">
-                                <div className="down">-</div>
-                                <div className="amount">1</div>
-                                <div className="up">+</div>
+                                <div className="down" onClick={decreaseQuantity}>-</div>
+                                <div className="amount">{quantity}</div>
+                                <div className="up" onClick={increaseQuantity}>+</div>
                             </div>
                         </div>
                         <button className="button" onClick={()=>addToCart(single)}>Add to cart</button>
@@ -75,12 +117,29 @@ function ProductPage() {
                         <Link to="/" className='detail-payment'>More payment options</Link>
                         <p className='delivery'><FaCheck className='icon'/> Pickup available at 34 High Street</p>
                         <p className='delivery second'>Usually ready in 24 hours</p>
-                        <Link to="/" className='view'>View store information</Link>
+                        <Link to="" className='view' onClick={toggleRightMenu}>View store information</Link>
+                        <div className={`right-menu ${isRightMenuOpen ? 'open' : ''}`} id="rightMenu">
+                            <div className="right-menu-content">
+                                <h2>{single.name}</h2>
+                                <FaWindowClose onClick={() => setIsRightMenuOpen(false)} />
+                                <div className="info">
+                                    <h2>34 High Street</h2>
+                                    <p className='delivery'><FaCheck className='icon'/> Pickup available ,usually ready in 24 hours</p>
+                                    <ul className="contact">
+                                        <li>34 High Street</li>
+                                        <li>Warsop NG20 0AE</li>
+                                        <li>United Kingdom</li>
+                                        <li>+441623842838</li>
+                                    </ul>
+                        
+                                </div>
+                            </div>
+                        </div>
                         <div className="info">
                             <p>{single.details} </p>
                             <p>It measures approx 34" and has an extender. </p>
                         </div>
-                        <Link className='share'><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></Link>
+                        <Link className='share' onClick={openShareDialog}><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></Link>
                     </div>
                 </div>
             </div>

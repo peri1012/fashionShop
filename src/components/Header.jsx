@@ -48,12 +48,6 @@ const Header = () => {
               <FaWindowClose onClick={() => setCartIsOpen(false)} />
             </div>
             <ul className="cartList">
-              {/* <div className="empty">
-                <p>Cart is Empty</p>
-                <Link to="/shop" onClick={() => setCartIsOpen(false)}>
-                  Buy new product
-                </Link>
-              </div> */}
               {
                 cart.map((item)=>(
                   <li className="cartItem" key={item.id}>

@@ -36,7 +36,7 @@ function ShopHome() {
                     <div className="cards">
                     {
                         data.map(item=>(
-                            <Card data={item}/>
+                            <Card data={item} key={item.id}/>
                         ))
                     }
                     </div>

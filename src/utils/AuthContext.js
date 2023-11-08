@@ -5,20 +5,20 @@ import axios from "axios";
 export const Auth=createContext()
 
 export const AuthContext= ({children}) =>{
-    const globalStates= {};
+    
     const [userIn,setUserIn]=useState(false);
-    const [loading,setLoading]=useState(false);
+    const [loading,setLoading]=useState(true);
     useEffect(()=>{
         checkLogin()
     },[])
-    
     
     const checkLogin=async () =>{
         
         const data={
             token: JSON.parse(localStorage.getItem("token")),
         }
-        await axios.post(process.env.REACT_APP_CHECK_LOGIN,data)
+        if(data.token!==null){
+            await axios.post(process.env.REACT_APP_CHECK_LOGIN,data)
         .then(res=>{
             setUserIn(true);
             setLoading(false);
@@ -27,9 +27,22 @@ export const AuthContext= ({children}) =>{
             setUserIn(false);
             setLoading(false);
         })
+        }else{
+            setLoading(false)
+        }
     }
-    return <Auth.Provider value={globalStates}>
+
+    const logOut =() =>{
+        localStorage.removeItem("token")
+        setUserIn(false)
+    }
+
+    const globalStates= {userIn,setUserIn,loading, setLoading};
+   
+    return (
+    <Auth.Provider value={globalStates}>
         {loading && <Loader/>}
         {children}
-        </Auth.Provider>
+    </Auth.Provider>
+    );
 }

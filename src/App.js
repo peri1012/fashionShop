@@ -15,6 +15,7 @@ import { MainContext } from './utils/MainContext';
 import { AuthContext } from './utils/AuthContext';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import PrivateRoutes from './routers/privateRouter';
 
 
 
@@ -26,11 +27,13 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path="/catalogue" element={<Catalogue />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/reset" element={<Reset/>} />
+            <Route path="/login" element={<Login />} />  
             <Route path="/create" element={<CreateAccount/>} />
             <Route path="/account" element={<Account/>}></Route>
+            <Route path="/reset" element={<Reset />} />
+            <Route element={PrivateRoutes}>
             <Route path="/cart" element={<Cart />} />
+            </Route>
             <Route path="/product-page/:productID" element={<ProductPage/>} />
             <Route path="*" element={<NotFound/>} />
           </Routes>

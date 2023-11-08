@@ -4,6 +4,7 @@ import {FaChevronRight, FaChevronDown} from 'react-icons/fa';
 import axios from "axios";
 import { useEffect,useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 function Catalogue() {
   const navigate=useNavigate();
@@ -32,6 +33,7 @@ function Catalogue() {
     <>
     <main>
       <section className="catalogue">
+        {loading && <Loader/>}
         <div className="container">
           <div className="row">
             <div className="content">    
