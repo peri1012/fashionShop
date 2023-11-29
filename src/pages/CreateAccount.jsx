@@ -1,9 +1,8 @@
-
 import {object, string} from 'yup';
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import axios from "axios";
-import {ToastContainer, toast} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {successMessage, errorMessage} from "../utils/toastMessage";
 import { useNavigate } from 'react-router-dom';

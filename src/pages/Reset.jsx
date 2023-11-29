@@ -19,6 +19,8 @@ function Reset() {
             console.log(err);
         })
     }
+    console.log(process.env.REACT_APP_RESET_PASSWORD);
+
 
   return (
     <>

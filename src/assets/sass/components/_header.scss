@@ -1,6 +1,8 @@
 @import '../mixins';
-header{
+.header{
+width: 100%;
         .row{
+          width: 100%;
             justify-content: center;
             display: flex;
             flex-direction: column;

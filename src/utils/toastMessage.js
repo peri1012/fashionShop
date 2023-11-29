@@ -12,7 +12,6 @@ const successMessage= () =>{
         theme:"dark",
     });
 }
-export {successMessage};
 
 const errorMessage= () =>{
     return toast.error("Try again",{
@@ -27,4 +26,4 @@ const errorMessage= () =>{
     });
 }
 
-export {errorMessage};
+export {successMessage,errorMessage};

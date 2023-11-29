@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {object, string} from 'yup';
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import {Auth} from '../utils/AuthContext';
 function Login() {
-    const navigate=useNavigate()
+    const {logIn}=useContext(Auth);
     const loginSchema=object({
         email:string().required("Email can't be blank.").trim(),
         password:string().required("Password can't be blank.").trim().matches(/[a-zA-Z0-9]{8,18}$/)
@@ -14,17 +13,8 @@ function Login() {
     const {register, handleSubmit, formState:{errors}}=useForm({
         resolver: yupResolver(loginSchema)
     })
-    const submitForm =async (data)=>{
-        await axios
-        .post(process.env.REACT_APP_LOGIN,data)
-        .then(res=>{
-            localStorage.setItem("token", JSON.stringify(res.data.token));
-            navigate("/account")
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-
+    const submitForm =(data)=>{
+        logIn(data)
     }
     
   return (
@@ -36,8 +26,10 @@ function Login() {
                     <form className='form' onSubmit={handleSubmit(submitForm)}>
                         <label className='title'>Login</label>
                         <div className="detail">
-                            <input type="email" name="email" placeholder='Email' {...register("email")}/>
+                            <input type="email" name="email" placeholder='Email' {...register("email")} />
+                            {errors.email && <span>{errors.email.message}</span>}
                             <input type="password" name="password"  placeholder='Password'{...register("password")} />
+                            {errors.password && <span>{errors.password.message}</span>}
                             <div className="forget">
                             <Link to="/reset" className='link'>Forgot your password?</Link>
                             </div>

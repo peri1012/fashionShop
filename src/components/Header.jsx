@@ -1,17 +1,29 @@
 import { FaSearch, FaUser ,FaBox, FaWindowClose} from 'react-icons/fa';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
 import Logo from "../assets/images/logo.avif";
 import { useContext, useState } from 'react';
 import { Context } from '../utils/MainContext';
+import {Auth} from '../utils/AuthContext';
+
 const Header = () => {
   //global states
   const {cart}=useContext(Context);
   //local states
-  const[cartIsOpen, setCartIsOpen]=useState(false);
+  const{cartIsOpen, setCartIsOpen}=useState(false);
+  const{userIn,logOut}=useContext(Auth);
+  const navigate=useNavigate();
+
+  const handleProfileClick = () => {
+    if (userIn) {
+      navigate('/account');
+    } else {
+      navigate('/login');
+    }
+  };
   return (
     <header className="header">
         <div className="row">
-          <div className="header-top">
+        <div className="header-top">
             <h1>Welcome to our store</h1>
           </div>
           <div className="header-middle">
@@ -33,14 +45,20 @@ const Header = () => {
             <div className="header-icon">
               <ul className="icons">
                 <li className="icon"><FaSearch/></li>
-                <li className="icon"><Link to="/login"><FaUser/></Link></li>
+                <li className='icon'>
+                  <button onClick={handleProfileClick}>
+                    <FaUser className='color' />
+                  </button>
+                </li>
               </ul>
             </div>
             <div className="userArea">
-              <div className="cart" onClick={() => setCartIsOpen(!cartIsOpen)}>
-                <span className="count">0</span>
-                <FaBox/>
-              </div>
+              {userIn && (
+                <div className="cart" onClick={() => setCartIsOpen(!cartIsOpen)}>
+                  <span className="count">0</span>
+                  <FaBox/>
+                </div>
+              )}
           </div>
           <div className={`cartBox ${cartIsOpen && "isOpen"}`}>
             <div className="cartHead">
@@ -73,9 +91,10 @@ const Header = () => {
           <div
             className={`overlay ${cartIsOpen && "isOpen"}`}
             onClick={() => setCartIsOpen(false)}
-          ></div>
+          >
               </div>
             </div>
+          </div>
           </div>
         </div>
     </header>
