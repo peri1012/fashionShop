@@ -11,16 +11,14 @@ function Reset() {
             token: JSON.parse(localStorage.getItem("token")),
             email:data.email
         }
-        await axios.post(process.env.REACT_APP_RESET_PASSWORD,body)
+        await axios.post(process.env.REACT_APP_RESET,body)
         .then(res=>{
             console.log(res)
-            navigate("/login")
+            navigate("/otp")
         }).catch(err=>{
             console.log(err);
         })
     }
-    console.log(process.env.REACT_APP_RESET_PASSWORD);
-
 
   return (
     <>
@@ -29,7 +27,7 @@ function Reset() {
             <div className="container">
                 <div className="row">
                 <form onSubmit={handleSubmit(onSubmit)} className='form'>
-                        <label htmlFor="" className='title'>Reset your password</label>
+                        <label htmlFor="reset" className='title'>Reset your password</label>
                         <div className="detail">
                             <div className="info">
                                 <p>We will send you an email to reset your password</p>

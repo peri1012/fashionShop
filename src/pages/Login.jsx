@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import {object, string} from 'yup';
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -14,7 +14,7 @@ function Login() {
         resolver: yupResolver(loginSchema)
     })
     const submitForm =(data)=>{
-        logIn(data)
+        logIn(data)  
     }
     
   return (

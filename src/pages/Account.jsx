@@ -1,9 +1,14 @@
 import { FaUser } from 'react-icons/fa';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useContext} from 'react';
 import { Auth } from '../utils/AuthContext';
 function Account() {
     const{logOut}=useContext(Auth);
+    const navigate=useNavigate();
+    const handleClick = () => {
+        navigate('/profile');
+      };
+    
   return (
     <>
     <main>
@@ -12,7 +17,7 @@ function Account() {
                 <div className="row">
                    <div className="first-part">
                     <h2>Account</h2>
-                    <FaUser className='color'/> <Link to="/" className='message color' onClick={logOut}>Log out</Link>
+                    <FaUser className='color' onClick={handleClick}/> <Link to="/" className='message color' onClick={logOut}>Log out</Link>
                    </div>
                    <div className="second-part">
                     <div className="left">
@@ -22,7 +27,7 @@ function Account() {
                     <div className="right">
                         <h3 className='font-medium'>Account details</h3>
                         <p className='font-paragraph'>United Kingdom</p>
-                        <Link to="/" className='message color'>View addresses (1)</Link>
+                        <Link to="/err" className='message color'>View addresses (1)</Link>
                     </div>
                    </div>
                 </div>

@@ -1,0 +1,34 @@
+@import '../mixins';
+.otp-content{
+    .container{
+        .row{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 50px;
+            .form{
+                width:100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap:20px;
+                .title{
+                    text-align: center;
+                    font-size: 48px;
+                    font-weight: 700;
+                    font-family: 'Libre Baskerville', serif;
+                    padding: 20px 0;
+                }
+                input[type="text"]{
+                    width: 50%;
+                    padding:20px;
+                }
+                .button{
+                    @include button(black, 20px 40px, transparent);
+                }
+            }
+        }
+    }
+}

@@ -10,6 +10,7 @@ export const AuthContext= ({children}) =>{
     const navigate=useNavigate();
     const [userIn,setUserIn]=useState(false);
     const [loading,setLoading]=useState(true);
+    const [user, setUser]=useState({})
     useEffect(()=>{
         checkLogin()
     },[]);
@@ -22,6 +23,7 @@ export const AuthContext= ({children}) =>{
         if(data.token!==null){
             await axios.post(process.env.REACT_APP_CHECK,data)
         .then(res=>{
+            setUser(res.data);
             setUserIn(true);
             setLoading(false);
         })
@@ -35,13 +37,13 @@ export const AuthContext= ({children}) =>{
     }
 
     const logIn=async (data) =>{
-        setLoading(true)
+        setLoading(false)
         await axios
         .post(process.env.REACT_APP_LOGIN,data)
         .then(res=>{
             localStorage.setItem("token", JSON.stringify(res.data.token));
             navigate("/account");
-            setLoading(false);
+            setLoading(true);
             window.location.reload()
         })
         .catch((err)=>{
@@ -53,7 +55,16 @@ export const AuthContext= ({children}) =>{
         setUserIn(false)
     }
 
-    const globalStates= {userIn,setUserIn,loading, setLoading,logOut,logIn};
+    const globalStates= {
+        userIn,
+        setUserIn,
+        loading, 
+        setLoading,
+        logOut,
+        logIn,
+        user,
+        setUser
+    };
    
     return (
     <Auth.Provider value={globalStates}>
