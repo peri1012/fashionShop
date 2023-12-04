@@ -11,7 +11,17 @@ import foot8 from '../assets/images/foot8.png';
 import foot9 from '../assets/images/foot9.png';
 import foot10 from '../assets/images/foot10.png';
 import foot11 from '../assets/images/foot11.png';
+import { useState } from 'react';
 const Footer = () => {
+    const [email, setEmail] = useState('');
+    const [subscribed, setSubscribed] = useState(false);
+
+    const handleSubscribe = async () => {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setSubscribed(true);
+        setEmail('')
+    };
+
   return (
     <footer>
         <div className="row">
@@ -58,10 +68,11 @@ const Footer = () => {
                 <h3 className="heading">Subscribe to our emails</h3>
                 <div className="media">
                     <form>
-                        <input type="email" name="email" placeholder="Email"/>
-                        <button className="btn">
+                        <input type="email" name="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+                        <button className="btn" onClick={handleSubscribe}>
                             <i className="icon"><FaArrowRight/></i>
                         </button>
+                        {subscribed && <p className="success-message">Thanks for subscribing!</p>}
                     </form>
                     <div className="social-medias">
                         <Link to="https://en-gb.facebook.com/thefashionshopwarsop/"><FaFacebookSquare /></Link>

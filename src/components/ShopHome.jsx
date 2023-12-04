@@ -10,7 +10,7 @@ function ShopHome() {
     const getData=async()=>{
       await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
       .then((res)=>{
-        setData(res.data);
+        setData(res.data.slice(0,8));
       })
       .catch((err)=>{
         console.log(err);

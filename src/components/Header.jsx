@@ -1,7 +1,9 @@
-import { FaSearch, FaUser ,FaBox, FaWindowClose} from 'react-icons/fa';
+import { FaSearch,FaBox, FaWindowClose} from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import Logo from "../assets/images/logo.avif";
-import { useContext, useState } from 'react';
+import { useContext, useState,useEffect } from 'react';
 import { Context } from '../utils/MainContext';
 import {Auth} from '../utils/AuthContext';
 
@@ -10,8 +12,20 @@ const Header = () => {
   const {cart}=useContext(Context);
   //local states
   const{cartIsOpen, setCartIsOpen}=useState(false);
-  const{userIn,logOut}=useContext(Auth);
+  const{userIn}=useContext(Auth);
   const navigate=useNavigate();
+
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+
+  const toggleSearch = () => {
+    setIsSearchVisible(!isSearchVisible);
+    document.body.style.overflow = isSearchVisible ? 'visible' : 'hidden';
+  };
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, []);
 
   const handleProfileClick = () => {
     if (userIn) {
@@ -21,12 +35,13 @@ const Header = () => {
     }
   };
   return (
-    <header className="header">
+    <header className="header"  >
         <div className="row">
         <div className="header-top">
             <h1>Welcome to our store</h1>
           </div>
-          <div className="header-middle">
+          {!isSearchVisible && (
+            <div className="header-middle">
             <div className="container">
               <div className="row">
               <div className="logo">
@@ -35,19 +50,20 @@ const Header = () => {
             <nav className="navbar">
               <ul className="navList">
                 <li className="navItem">
-                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/" exact activeClassName="active">Home</NavLink>
                 </li>
                 <li className="navItem">
-                  <NavLink to="/catalogue">Catalogue</NavLink>
+                  <NavLink to="/catalogue" activeClassName="active">Catalogue</NavLink>
                 </li>
               </ul>
             </nav>
             <div className="header-icon">
               <ul className="icons">
-                <li className="icon"><FaSearch/></li>
+                <li className="icon" onClick={toggleSearch}><FaSearch/></li>
                 <li className='icon'>
-                  <button onClick={handleProfileClick}>
-                    <FaUser className='color' />
+                  <button className='btn' onClick={handleProfileClick}>
+                  <FontAwesomeIcon icon={faUser} className='color icon' />
+                    {/* <FaUserCircle /> */}
                   </button>
                 </li>
               </ul>
@@ -96,6 +112,13 @@ const Header = () => {
             </div>
           </div>
           </div>
+          )}
+          {isSearchVisible && (
+                  <div className="search-input search-overlay">
+                    <input type="text" placeholder="Search" />
+                    <FaWindowClose onClick={() => toggleSearch(true)} />
+                  </div>
+                )}
         </div>
     </header>
   )

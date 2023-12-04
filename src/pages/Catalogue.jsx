@@ -11,9 +11,7 @@ function Catalogue() {
   const[data,setData]=useState([]);
   const [loading,setLoading]=useState(false);
   
-  useEffect(()=>{
-    getData()
-  },[])
+  
   const getData=async()=>{
     setLoading(true)
     await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
@@ -28,7 +26,9 @@ function Catalogue() {
     })
     
   };
-
+  useEffect(()=>{
+    getData()
+  },[])
   return (
     <>
     <main>
