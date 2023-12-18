@@ -115,7 +115,6 @@
                         position: absolute;
                         top: 120px;
                         border: 1px solid black;
-                        // right: 50px;
                         background-color: white;
                         box-shadow: 1px 1px 10px 1px #ffffff50;
                         padding: 16px;
@@ -127,21 +126,6 @@
                           transform: translateX(0%);
                           opacity: 1;
                           visibility: visible;
-                        }
-                        .cartHead {
-                          display: flex;
-                          justify-content: space-between;
-                          padding: 0 16px;
-                          margin-bottom: 50px;
-                          background-color: white;
-                          svg {
-                            path {
-                              cursor: pointer;
-                              &:hover {
-                                color: red;
-                              }
-                            }
-                          }
                         }
                         .cartList {
                           width: 100%;
@@ -187,23 +171,6 @@
                                 font-weight: 700;
                               }
                             }
-                            .remove {
-                              position: absolute;
-                              top: 0;
-                              left: 0;
-                              width: 100%;
-                              height: 100%;
-                              background-color: #ff000080;
-                              backdrop-filter: blur(4px);
-                              display: flex;
-                              justify-content: center;
-                              align-items: center;
-                              font-weight: 500;
-                              font-size: 18px;
-                              cursor: pointer;
-                              visibility: hidden;
-                              opacity: 0;
-                            }
                           }
                           gap: 8px;
                         .button{
@@ -237,8 +204,47 @@
                           opacity: 1;
                         }
                     }
-                    
                 
             }
+  }
+}
+
+
+
+@media (max-width: 960px) {
+  .header {
+    .row {
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+
+      .header-middle {
+        .container {
+          .row {
+            padding: 14px; 
+            justify-content: space-between;
+            gap: 20px;
+
+            .navbar .navList {
+              display: none; 
+            }
+
+            .header-icon {
+              width: 100%;
+            }
+
+            .userArea {
+              gap: 16px; 
+            }
+          }
+        }
+      }
+
+      .cartBox {
+        width: 200px !important;
+      }
+
+    }
   }
 }

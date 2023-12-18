@@ -121,7 +121,7 @@ const Header = () => {
           </div>
           )}
           {isSearchVisible && (
-                  <div className="search-input search-overlay">
+                  <div className="search-input search-overlay ">
                     <input type="text" placeholder="Search" />
                     <FaWindowClose onClick={() => toggleSearch(true)} />
                   </div>

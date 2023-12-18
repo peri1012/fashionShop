@@ -14,7 +14,6 @@ import { Pagination, Navigation } from 'swiper/modules';
 import slide2 from '../assets/images/slide2.webp';
 import slide3 from '../assets/images/slide3.webp';
 import slide4 from '../assets/images/slide4.webp';
-import slide5 from '../assets/images/slide5.webp';
 import SlideContent from './SlideContent';
 
 export default function App() {
@@ -28,21 +27,30 @@ export default function App() {
           clickable: true,
         }}
         
-        // navigation={true}
-         modules={[Pagination, Navigation]}
+        navigation={true}
+        modules={[Pagination, Navigation]}
         className="mySwiper"
       >
       <SwiperSlide><img src={slide2} alt="slide2" className='swiper-slide'/>
-        <SlideContent/>
+        <SlideContent
+          heading="New In footwear"
+          detail="Discover our newest range of styles"
+          linkTo="Shop now"
+        />
       </SwiperSlide>
       <SwiperSlide><img src={slide3} alt="slide3" className='swiper-slide'/>
-        <SlideContent/>
+        <SlideContent
+          heading="Essentials"
+          detail="From basic vests to must have trousers, shop our essentials range"
+          linkTo="Shop now"
+        />
       </SwiperSlide>
       <SwiperSlide><img src={slide4} alt="slide4" className='swiper-slide'/>
-        <SlideContent/>
-      </SwiperSlide>
-      <SwiperSlide><img src={slide5} alt="slide5" className='swiper-slide'/>
-      <SlideContent/>
+        <SlideContent 
+            heading="ROBELL"
+            detail="We are an official stockist of Robell"
+            linkTo="Shop now"
+        />
       </SwiperSlide>
 
       </Swiper>

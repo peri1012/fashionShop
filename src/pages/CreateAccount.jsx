@@ -41,13 +41,6 @@ function CreateAccount() {
                         
                         <label  className='title'>Create account</label>
                         <div className="detail">
-                        {/* <span>
-                            Please adjust the following:
-                            <ul>
-                                <li>Password can't be blank</li>
-                                <li>Email can't be blank</li>
-                            </ul>
-                        </span> */}
                             <input type="text" name="name" {...register("name")}  placeholder='First Name'/>
                             <input type="text" name="surname"  {...register("surname")}placeholder='Last Name'/>
                             <input type="email" name="email" {...register("email")} placeholder='Email' id="email"/>

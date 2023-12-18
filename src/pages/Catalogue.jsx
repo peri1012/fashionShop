@@ -58,7 +58,7 @@ function Catalogue() {
               <div className="cards">
                 {
                   data.map(item=>(
-                    <div className="card-box" key={item.id}  style={{ border: '1px solid green' }}>
+                    <div className="card-box" key={item.id} >
                     <Card data={item}/>
                     <button className="button" onClick={()=>addToCartPage(item)}>Add to cart</button>
                     </div>

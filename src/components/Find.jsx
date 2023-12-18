@@ -7,7 +7,7 @@ function Find() {
             <div className="row">
                 <div className="find-card">
                     <div className="heading">
-                        <p>Welcome to The Fashion Shop</p>
+                        <p>Where to find us</p>
                     </div>
                     <ul className="adresses">
                         <li className="item">34 High Street</li>

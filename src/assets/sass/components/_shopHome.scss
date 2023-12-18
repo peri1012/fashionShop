@@ -56,6 +56,7 @@
     }
   
     .shop-home .container .row .second-part .cards {
-      grid-template-columns: repeat(2, 1fr);
+        padding:10px;
+        grid-template-columns: repeat(2, 1fr);
     }
 }

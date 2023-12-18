@@ -1,5 +1,5 @@
 //Router
-import { Route, Routes,useLocation } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 
 //Pages
 import Home from './pages/Home';
@@ -19,21 +19,13 @@ import { AuthContext } from './utils/AuthContext';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import PrivateRoutes from './routers/privateRouter';
-import CheckOut from './pages/CheckOut';
-
 
 
 const App = () => {
-  const location = useLocation();
-
-  const isCheckoutPage = () => {
-    return location.pathname.includes('/check-out');
-  };
-
   return (
     <AuthContext>
       <MainContext>
-      {!isCheckoutPage() && <Header />}
+       <Header />
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path="/catalogue" element={<Catalogue />} />
@@ -46,12 +38,11 @@ const App = () => {
             <Route path="/reset" element={<Reset />} />
             <Route path="/change-password" element={<ChangePass />} />
             <Route path="/otp" element={<Otp />} />
-            <Route path="/check-out" element={<CheckOut />} />
           </Route>
             <Route path="/product-page/:productID" element={<ProductPage/>} />
             <Route path="*" element={<NotFound/>} />
           </Routes>
-          {!isCheckoutPage() && <Footer />}
+        <Footer />
         </MainContext>
     </AuthContext>
 

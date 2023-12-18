@@ -116,7 +116,7 @@ function ProductPage() {
                         <Link to="/" className='detail-payment'>More payment options</Link>
                         <p className='delivery'><FaCheck className='icon'/> Pickup available at 34 High Street</p>
                         <p className='delivery second'>Usually ready in 24 hours</p>
-                        <button className='view' onClick={() => setIsRightMenuOpen(!isRightMenuOpen)}>View store information</button>
+                        <button className='view btn link' onClick={() => setIsRightMenuOpen(!isRightMenuOpen)}>View store information</button>
                         <div className={`right-menu ${isRightMenuOpen ? 'open' : ''}`} id="rightMenu">
                             <div className="right-menu-content">
                                 <h2>{single.name}</h2>
@@ -137,7 +137,7 @@ function ProductPage() {
                             <p>{single.details} </p>
                             <p>It measures approx 34" and has an extender. </p>
                         </div>
-                        <button className='share' onClick={openShareDialog}><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></button>
+                        <button className='share btn'  onClick={openShareDialog}><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></button>
                     </div>
                 </div>
             </div>

@@ -15,8 +15,6 @@
       margin-bottom: 10px;
     }
     .button{
-      color:black !important;
-      border: 1px solid black !important;
-      @include button(red, 20px 35px, transparent);
+      @include button(black, 20px 35px, transparent);
     }
   }

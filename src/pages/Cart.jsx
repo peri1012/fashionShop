@@ -4,6 +4,9 @@ import axios from "axios";
 import { useContext, useEffect,useState } from "react";
 import { Context } from "../utils/MainContext";
 import {FaTrash} from 'react-icons/fa';
+import ShopPay from '../assets/images/shopPay.png';
+import payPal from '../assets/images/PayPal.svg';
+import googlePay from '../assets/images/googlePay.png';
 function Cart() {
     //Global states
     const {cart,setCart,removeFromCart}=useContext(Context);
@@ -89,21 +92,32 @@ function Cart() {
         <div className="container">
           <div className="row">
           <div className='table'>
-          <h2>Cart Page</h2>
-          <table>
+            <div className="beginning">
+              <div className="heading">
+                  <h2>Your cart</h2>
+              </div>
+              <Link to="/catalogue" className='link'>Continue shopping</Link>
+            </div>
+          
+          <div className='table-content'>
+            <div className="title">
+              <h2>Product</h2>
+              <h2>Quantity</h2>
+              <h2>Total</h2>
+            </div>
             <tbody>
               {cart.map((item) => (
-                <tr key={item.id}>
-                  <td>
-                    <div className='product'>
+                <div key={item.id} className='list'>
+                  <div className='product'>
                       <div className="cartImg">
                         <img src={`${process.env.REACT_APP_PRODUCT_IMG}${item.productImage}`} alt={item.name} />
                       </div>
-                      <p>{item.name}</p>
-                      <p>Quantity: {item.quantity}</p>
+                      <div className="detail">
+                        <p>{item.name}</p>
+                        <p>Quantity: {item.quantity}</p>
+                        <p>Price: {item.price}</p>
+                      </div>
                     </div>
-                  </td>
-                  <td>
                     <div className="quantity">
                       <div className="box">
                         <div className="down" onClick={() => decreaseQuantity(item.id)}>-</div>
@@ -112,17 +126,25 @@ function Cart() {
                       </div>
                       <FaTrash onClick={() => removeFromCart(item.id)} />
                     </div>
-                  </td>
-                  <td>
-                    <div>
+                    <div className='price'>
                       <p>£ {item.quantity * item.price}</p>
                     </div>
-                  </td>
-                </tr>
+                </div>
               ))}
             </tbody>
-          </table>     
-          <div>Subtotal: <span>£ {totalPrice} GBP</span></div>
+          </div>     
+          <div className="payment">
+            <div className="left">
+              <div className='heading'>Subtotal: <span className='price'>£ {totalPrice} GBP</span></div>
+              <p className='link'>Tax included. <Link to="/err" className='link' id="link">Shipping</Link> calculated at checkout.</p>
+              <button className="button">Check out</button>
+              <div className="pays">
+                <Link to="/err"><img src={ShopPay} alt="Shoppay" /></Link>
+                <Link to="/err"><img src={payPal} alt="payPal" /></Link>
+                <Link to="/err"><img src={googlePay} alt="googlePay" /></Link>
+              </div>
+            </div>
+          </div>
         </div>
           </div>
         </div>

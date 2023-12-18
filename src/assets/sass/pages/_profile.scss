@@ -44,22 +44,17 @@
                     display: none;
                 }
             }
-            .form{
-                width:100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap:20px;
-                
-                input[type="text"]{
-                    width: 50%;
-                    padding:20px;
-                }
-                .button{
-                    @include button(black, 20px 40px, transparent);
-                }
+            .button{
+                @include button(black, 20px 40px, transparent);
             }
         }
     }
+}
+
+@media (max-width: 960px) {
+    .profilePage .container .row .profile-content {
+      font-size: 20px;
+    }
+  
+    
 }

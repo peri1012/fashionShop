@@ -2,16 +2,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    .image{
-        width:25%;
-        img{
-            width: 100%;
+    justify-content: flex-start;
+    padding-top:20px;
+    .img-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .image{
+            width:25%;
+            img{
+                width: 100%;
+            }
         }
     }
     .info-details{
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
         padding: 60px;
@@ -25,5 +31,19 @@
             font-family: 'Assistant', sans-serif;
             font-size: 19px;
         }
+        .link{
+            color:#000;
+            text-align: center;
+            .icon{
+                text-align: center;
+                position: relative;
+                display: inline-block;
+                transition: transform 0.3s ease-out;
+                &:hover{
+                    transform: translateX(3px);
+                }
+            }
+        }
+
     }
 }

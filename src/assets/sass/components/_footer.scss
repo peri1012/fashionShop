@@ -42,6 +42,7 @@ footer{
                     }
                 }
                 .footer-middle{
+                    margin-bottom: 20px;
                     .heading{
                         font-size: 28px;
                         font-family: 'Libre Baskerville', serif;
@@ -53,14 +54,22 @@ footer{
                         justify-content: space-between;
                         form{
                             display: flex;
-                            width:100%;
+                            width:auto;
+                            border: 1px solid black;
                             input[type="email"]{
-                                width: 25%;
+                                width: 100%;
                                 padding:20px;
+                                border: none;
                             }
                             .btn{
                                 padding: 20px;
                                 margin-left:0;
+                                background-color: transparent;
+                                border: none;
+                            }
+                            transition: all .3s;
+                            &:hover{
+                                transform: scale(1.01);
                             }
                         }
                         .social-medias{
@@ -69,6 +78,13 @@ footer{
                             gap:20px;
                             display: flex;
                             flex-direction: row;
+                            .icon{
+                                color:#000;
+                                transition: all .3s;
+                                &:hover{
+                                    transform: scale(1.1);
+                                }
+                            }
                         }
                     }
                 }
@@ -79,6 +95,7 @@ footer{
                 display: flex;
                 justify-content: center;
                 flex-direction: row;
+                flex-wrap: wrap;
                 gap:10px;
                 .pay-item{
                     max-width:30px;
@@ -94,9 +111,16 @@ footer{
                 margin-top: 20px;
                 text-align: center;
                 font-size: 14px;
-                color:#8A8FBE;
+                color:#12121260;
                 a{
-                    color:#8A8FBE;
+                    color:#12121260;
+                    transition: all .3s;
+                    &:hover{
+                        transform: scale(1.01);
+                        color:#12121290;
+                        text-decoration: underline;
+                        text-underline-offset: 0.3rem;
+                    }
                 }
             }
         }
@@ -104,10 +128,41 @@ footer{
 }
 
 @media (max-width: 768px) {
-    footer .container .row .footer-top {
+    footer .row .border .container .footer-top {
+        padding: 20px;
         flex-direction: column;
+        .footer-part{
+            width: 100%;
+        }
     }
-    footer .container .row .footer-middle .media {
-        flex-direction: column;
+    footer .row .border .container .footer-middle{
+        padding: 20px;
+        .heading{
+            font-size:20px;
+        }
+        .media{
+            flex-direction: column;
+            align-items: center;
+            form{
+                display: flex;
+                width:100%;
+                input[type="email"]{
+                    width: 100%;
+                    padding:20px;
+                }
+                .btn{
+                    padding: 20px;
+                    margin-left:0;
+                }
+            }
+        }
+        
+    }
+    footer .row .border .container .footer-bottom{      
+        .payment-cards{
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap:10px;  
+        }  
     }
 }

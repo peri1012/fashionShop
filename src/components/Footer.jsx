@@ -75,8 +75,8 @@ const Footer = () => {
                         {subscribed && <p className="success-message">Thanks for subscribing!</p>}
                     </form>
                     <div className="social-medias">
-                        <Link to="https://en-gb.facebook.com/thefashionshopwarsop/"><FaFacebookSquare /></Link>
-                        <Link to="https://www.instagram.com/thefashionshopwarsop/?hl=en"><FaInstagram /> </Link>
+                        <Link to="https://en-gb.facebook.com/thefashionshopwarsop/" className="icon"><FaFacebookSquare /></Link>
+                        <Link to="https://www.instagram.com/thefashionshopwarsop/?hl=en" className="icon"><FaInstagram /> </Link>
                          
                     </div>
                 </div>
@@ -121,8 +121,8 @@ const Footer = () => {
                 </div>
                 <p>
                     ©{new Date().getFullYear()}, 
-                    <Link to="/">The Fashion Shop</Link> 
-                    <Link to="https://www.shopify.com/?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore">Powered by Shopify </Link>
+                    <Link to="/" >The Fashion Shop</Link> 
+                    <Link to="https://www.shopify.com/?utm_campaign=poweredby&utm_medium=shopify&utm_source=onlinestore"> Powered by Shopify </Link>
                 </p>
             </div>
         </div>

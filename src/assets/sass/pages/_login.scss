@@ -65,3 +65,13 @@
         }
     }
 }
+@media (max-width: 960px) {
+    .login-content .container .row .form .detail{
+        width: 100%;
+        input[type="email"],[type="password"]{
+            width: 100%;
+            padding:20px;
+        }   
+    }
+  
+}

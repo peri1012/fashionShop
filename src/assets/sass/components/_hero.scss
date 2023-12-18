@@ -57,6 +57,7 @@
                 }
                 .button{
                     @include button(transparent, 20px 35px, transparent);
+                    border: 2px solid white;
                 }
                 
             }
@@ -66,6 +67,13 @@
 }
 
 @media (max-width: 960px) {
+    .hero-section .header-bottom .mobile{
+        text-align: center;
+        width:100%;
+        font-family: 'Assistant', sans-serif;
+        font-size: 19px;
+    }
+        
     .hero .container .row .hero-box{
         max-width: 100%;
     }

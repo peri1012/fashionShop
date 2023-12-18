@@ -32,9 +32,9 @@ function Profile() {
                     </div>
                     <label htmlFor="img" >Edit profile image</label>
                     <input id="img" type='file' onChange={(e)=>setImage(e.target.files[0])}/>
-                    {image && <button onClick={changeProfileImg}>Change a photo</button>}
+                    {image && <button onClick={changeProfileImg} className='button'>Change a photo</button>}
                 </div>
-                <Link to="/reset">Change password</Link>
+                <Link to="/reset" className='button'>Change password</Link>
 
             </div>
         </div>

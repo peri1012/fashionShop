@@ -32,3 +32,14 @@
         }
     }
 }
+
+@media (max-width: 960px) {
+    .otp-content .container .row .form .detail{
+        width: 100%;
+        input[type="text"]{
+            width: 100%;
+            padding:20px;
+        }   
+    }
+  
+}

@@ -37,6 +37,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    flex-wrap: wrap;
                     padding: 20px 0;
                     .box{
                         font-family: 'Assistant', sans-serif;
@@ -52,4 +53,31 @@
             }
         }
     }
+}
+@media (max-width: 960px) {
+    .catalogue .container .row .content .heading{
+        font-size:36px;
+    }
+    .catalogue .container .row .content .catalogue-menu{
+        flex-direction: column;
+    }
+    .catalogue .container .row .content .cards{
+        padding:10px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .catalogue .container .row .content .navigation{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .box{
+            font-size: 16px;
+            span{
+                margin:20px 20px 20px 0;
+                .icon{
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+  
 }
