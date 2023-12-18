@@ -11,23 +11,27 @@ import { useEffect,useState } from "react";
 import { Context } from '../utils/MainContext';
 function ProductPage() {
     //Global states
-    const {addToCart}=useContext(Context);
-    const[single,setSingle]=useState({});
+    const { addToCartPage}=useContext(Context);
     const {productID}=useParams();
+    const[single,setSingle]=useState({
+        productImage: `uploads/item${productID}.webp`
+    });
+    
+
     useEffect(()=>{
+        const getSingleData=async()=>{
+            await axios
+            .get(`${process.env.REACT_APP_SINGLE_PRODUCT}/${productID}`)
+            .then((res)=>{
+                setSingle(res.data);
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        }
     getSingleData()
     },[productID])
-    const getSingleData=async()=>{
-        await axios
-        .get(`${process.env.REACT_APP_SINGLE_PRODUCT}/${productID}`)
-        .then((res)=>{
-            setSingle(res.data);
-            
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    }
+    
     //Recommended cards
     const[data,setData]=useState([]);
     useEffect(()=>{
@@ -43,8 +47,9 @@ function ProductPage() {
         })
         
     };
-    //Increase-decrease function
-    const [quantity, setQuantity] = useState(1);
+    
+    //Increase-decrease
+    const[quantity,setQuantity]=useState(1);
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
     };
@@ -55,9 +60,7 @@ function ProductPage() {
     };
 
     //Share Link Function
-    useEffect(()=>{
-        openShareDialog()
-        },[])
+    
     const openShareDialog = async () => {
         if (navigator.share) {
           try {
@@ -73,15 +76,10 @@ function ProductPage() {
             alert('Sharing is not supported in this browser.');
         }
       };
-      
+      useEffect(()=>{
+        },[])
       //Right-side 
       const [isRightMenuOpen, setIsRightMenuOpen] = useState(false);
-      useEffect(()=>{
-        toggleRightMenu()
-        },[])
-      const toggleRightMenu = () => {
-        setIsRightMenuOpen(!isRightMenuOpen);
-      };
 
     return (
     <>
@@ -91,10 +89,10 @@ function ProductPage() {
                 <div className="row">
                     <div className="pictures">
                         <div className="top">
-                        <img src={`${process.env.REACT_APP_PRODUCT_IMG}${single.productImage}`} alt={single.name} />
+                            <img src={`${'http://localhost:5000'}/${single.productImage}`} alt={single.name} />
                         </div>
                         <div className="bottom">
-                        <img src={`${process.env.REACT_APP_PRODUCT_IMG}${single.productImage}`} alt={single.name} />
+                            <img src={`${'http://localhost:5000'}/${single.productImage}`} alt={single.name} />
                         </div>
                     </div>
                     <div className="info-box">
@@ -111,13 +109,14 @@ function ProductPage() {
                                 <div className="amount">{quantity}</div>
                                 <div className="up" onClick={increaseQuantity}>+</div>
                             </div>
+
                         </div>
-                        <button className="button" onClick={()=>addToCart(single)}>Add to cart</button>
+                        <button className="button" onClick={()=>addToCartPage(single)}>Add to cart</button>
                         <button className="button shopPay"><span className="word">Buy with</span> <img src={shopPay} alt="shopPay" /></button>
                         <Link to="/" className='detail-payment'>More payment options</Link>
                         <p className='delivery'><FaCheck className='icon'/> Pickup available at 34 High Street</p>
                         <p className='delivery second'>Usually ready in 24 hours</p>
-                        <Link to="" className='view' onClick={toggleRightMenu}>View store information</Link>
+                        <button className='view' onClick={() => setIsRightMenuOpen(!isRightMenuOpen)}>View store information</button>
                         <div className={`right-menu ${isRightMenuOpen ? 'open' : ''}`} id="rightMenu">
                             <div className="right-menu-content">
                                 <h2>{single.name}</h2>
@@ -131,7 +130,6 @@ function ProductPage() {
                                         <li>United Kingdom</li>
                                         <li>+441623842838</li>
                                     </ul>
-                        
                                 </div>
                             </div>
                         </div>
@@ -139,7 +137,7 @@ function ProductPage() {
                             <p>{single.details} </p>
                             <p>It measures approx 34" and has an extender. </p>
                         </div>
-                        <Link className='share' onClick={openShareDialog}><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></Link>
+                        <button className='share' onClick={openShareDialog}><FontAwesomeIcon icon={faArrowUpFromBracket}/><span>Share</span></button>
                     </div>
                 </div>
             </div>

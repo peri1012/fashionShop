@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {useForm} from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 function Otp() {
   const {register,handleSubmit}=useForm()

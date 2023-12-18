@@ -2,33 +2,36 @@
 import Card from '../components/Card';
 import {FaChevronRight, FaChevronDown} from 'react-icons/fa';
 import axios from "axios";
-import { useEffect,useState } from "react";
+import { useEffect,useState,useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
-
+import { Context } from '../utils/MainContext';
 function Catalogue() {
+  const {addToCartPage}=useContext(Context);
+
   const navigate=useNavigate();
   const[data,setData]=useState([]);
   const [loading,setLoading]=useState(false);
   
   
-  const getData=async()=>{
-    setLoading(true)
-    await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
-    .then((res)=>{
-      setData(res.data);
-      setLoading(false)
-    })
-    .catch((err)=>{
-      console.log(err);
-      setLoading(false);
-      navigate("/error");
-    })
-    
-  };
+  
   useEffect(()=>{
+    const getData=async()=>{
+      setLoading(true)
+      await axios.get(process.env.REACT_APP_ALL_PRODUCTS)
+      .then((res)=>{
+        setData(res.data);
+        setLoading(false)
+      })
+      .catch((err)=>{
+        console.log(err);
+        setLoading(false);
+        navigate("/error");
+      })
+      
+    };
     getData()
-  },[])
+  },[navigate])
   return (
     <>
     <main>
@@ -57,7 +60,7 @@ function Catalogue() {
                   data.map(item=>(
                     <div className="card-box" key={item.id}  style={{ border: '1px solid green' }}>
                     <Card data={item}/>
-                    <button className="button">Add to cart</button>
+                    <button className="button" onClick={()=>addToCartPage(item)}>Add to cart</button>
                     </div>
 
                   ))

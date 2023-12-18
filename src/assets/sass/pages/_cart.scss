@@ -43,9 +43,72 @@
                     }
                 }
             }
+            
+              
+        }
+    }
+    
+}
+.table {
+    width: 100%;
+    border:1px solid white;
+    border-collapse: collapse;
+    height:auto;
+    background-color:red;
+    text-align: center;
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+.product{
+    display: flex;
+    flex-direction: row;
+    gap:30px;
+    background-color:blue;
+    width: 100%;
+    .cartImg{
+        width: 100px;
+        img{
+            width: 100%;
         }
     }
 }
+.quantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    .box{
+        margin-top: 10px;
+        width:150px;
+        display: flex;
+        border:1px solid black;
+        .down{
+            padding: 10px 0;
+            width:50px;
+            text-align: center;
+        }
+        .amount{
+            padding: 10px 0;
+            width:50px;
+            text-align: center;
+        }
+        .up{
+            padding: 10px 0;
+            width: 50px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #ddd;
+    
+            &:hover {
+              background-color: #ccc;
+            }
+          }
+    }
+}
+
+    }
+  }
 .cart-middle-part{
     .container{
         .row{

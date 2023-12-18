@@ -10,8 +10,8 @@ import {Auth} from '../utils/AuthContext';
 const Header = () => {
   //global states
   const {cart}=useContext(Context);
-  //local states
-  const{cartIsOpen, setCartIsOpen}=useState(false);
+  // local states
+  const [cartIsOpen, setCartIsOpen] = useState(false);
   const{userIn}=useContext(Auth);
   const navigate=useNavigate();
 
@@ -34,6 +34,17 @@ const Header = () => {
       navigate('/login');
     }
   };
+
+  const [count,setCount]=useState(0)
+  useEffect(()=>{
+    const calcCartCount=()=>{
+      const sum = new Set(cart.map((item) => item.id));
+      const totalCount = sum.size;
+      setCount(totalCount);
+    }
+    calcCartCount()
+  },[cart])
+
   return (
     <header className="header"  >
         <div className="row">
@@ -50,10 +61,10 @@ const Header = () => {
             <nav className="navbar">
               <ul className="navList">
                 <li className="navItem">
-                  <NavLink to="/" exact activeClassName="active">Home</NavLink>
+                  <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : null)}>Home</NavLink>
                 </li>
                 <li className="navItem">
-                  <NavLink to="/catalogue" activeClassName="active">Catalogue</NavLink>
+                  <NavLink to="/catalogue" className={({ isActive }) => (isActive ? 'active' : null)}>Catalogue</NavLink>
                 </li>
               </ul>
             </nav>
@@ -62,8 +73,7 @@ const Header = () => {
                 <li className="icon" onClick={toggleSearch}><FaSearch/></li>
                 <li className='icon'>
                   <button className='btn' onClick={handleProfileClick}>
-                  <FontAwesomeIcon icon={faUser} className='color icon' />
-                    {/* <FaUserCircle /> */}
+                    <FontAwesomeIcon icon={faUser} className='color icon' />
                   </button>
                 </li>
               </ul>
@@ -71,7 +81,7 @@ const Header = () => {
             <div className="userArea">
               {userIn && (
                 <div className="cart" onClick={() => setCartIsOpen(!cartIsOpen)}>
-                  <span className="count">0</span>
+                  <span className="count">{count}</span>
                   <FaBox/>
                 </div>
               )}
@@ -91,16 +101,13 @@ const Header = () => {
                 <div className="carInfo">
                   <p className="carTitle">{item.name}</p>
                 </div>
-                <div className="remove">
-                  <p>Remove Car</p>
-                </div>
               </li>
                 ))
               }
               <Link to="/cart" className="button" onClick={() => setCartIsOpen(false)}>
-                View on Cart <span className="quantity">(1)</span>
+                View on Cart <span className="quantity">({count})</span>
               </Link>
-              <button className="button">Check Out</button>
+              <Link to="/check-out" className="button">Check Out</Link>
               <Link to="/catalogue" className='detail-payment'>Continue Shopping</Link>
             </ul>
           </div>

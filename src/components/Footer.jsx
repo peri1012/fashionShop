@@ -11,9 +11,9 @@ import foot8 from '../assets/images/foot8.png';
 import foot9 from '../assets/images/foot9.png';
 import foot10 from '../assets/images/foot10.png';
 import foot11 from '../assets/images/foot11.png';
-import { useState } from 'react';
+import {  useState } from 'react';
 const Footer = () => {
-    const [email, setEmail] = useState('');
+    const [setEmail] = useState('');
     const [subscribed, setSubscribed] = useState(false);
 
     const handleSubscribe = async () => {
@@ -21,7 +21,7 @@ const Footer = () => {
         setSubscribed(true);
         setEmail('')
     };
-
+    
   return (
     <footer>
         <div className="row">
